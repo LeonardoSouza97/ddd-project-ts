@@ -8,21 +8,24 @@ class UserRepository implements IUserRepository {
     this.userModel = UserModel;
   }
 
-  persist = async (domainUser: User) => {
-    await this.userModel.create(domainUser);
+  persist(domainUser: User) {
+    return this.userModel.create(domainUser);
   }
 
   merge(domainUser: User) {
-    throw new Error("Method not implemented.");
+    return this.userModel.update(domainUser, { where: { id: domainUser.id } });
   }
+
   remove(userId: Number) {
-    throw new Error("Method not implemented.");
+    return this.userModel.destroy({ where: { id: userId } });
   }
-  get(userId: Number) {
-    throw new Error("Method not implemented.");
+
+  getById(userId: Number) {
+    return this.userModel.findOne({ where: { id: userId } });
   }
+
   getByEmail(userEmail: String) {
-    throw new Error("Method not implemented.");
+    return this.userModel.findOne({ where: { email: userEmail } });
   }
 
 }
