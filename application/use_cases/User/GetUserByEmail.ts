@@ -2,7 +2,7 @@ import User from "../../../domain/User/User";
 import IUserRepository from "../../../domain/User/IUserRepository";
 import GenericUseCase from "../generic/GenericUseCase";
 
-class CreateUser implements GenericUseCase<User> {
+class GetUserByEmail implements GenericUseCase<User> {
   private readonly userRepository: IUserRepository;
 
   constructor({ userRepository }) {
@@ -10,9 +10,9 @@ class CreateUser implements GenericUseCase<User> {
   }
 
   async execute(user: User) {
-    await this.userRepository.persist(user);
+    return this.userRepository.getByEmail(user.email);
   }
 
 }
 
-export default CreateUser;
+export default GetUserByEmail;
