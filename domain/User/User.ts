@@ -1,8 +1,8 @@
 export default class User {
-  private id : BigInteger;
-  private name : String;
-  private email : String;
-  private dtBirthday : Date;
+  public id : Number;
+  public name : String;
+  public email : String;
+  public dtBirthday : Date;
 
   constructor(id = null, name: String, email: String, dtBirthday : Date){
     this.id = id,
